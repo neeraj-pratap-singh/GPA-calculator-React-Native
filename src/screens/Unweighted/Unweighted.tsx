@@ -3,7 +3,7 @@ import { View, Text, ScrollView } from 'react-native';
 import { useTranslation } from 'react-i18next';
 import { useTheme } from '../../hooks';
 
-const Information: React.FC = () => {
+const Unweighted: React.FC = () => {
   const { t } = useTranslation(['example', 'information']);
   const { Fonts, Gutters, Layout, darkMode: isDark } = useTheme();
 
@@ -42,4 +42,4 @@ const Information: React.FC = () => {
   );
 };
 
-export default Information;
+export default Unweighted;

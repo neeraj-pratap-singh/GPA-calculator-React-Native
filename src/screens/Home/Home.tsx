@@ -63,7 +63,7 @@ const Home = () => {
         >
           <TouchableOpacity
             style={[Common.button.circle, Gutters.regularBMargin]}
-            onPress={() => console.log('weighted calculator')}
+            onPress={() => navigation.navigate("Weighted")}
           >
             <Icon
               name="calculator" // <-- choose appropriate icon name
@@ -74,7 +74,7 @@ const Home = () => {
 
           <TouchableOpacity
             style={[Common.button.circle, Gutters.regularBMargin]}
-            onPress={() => console.log('un-weighted calculator')}
+            onPress={() => navigation.navigate("Unweighted")}
           >
             <Icon
               name="calculator-variant" // <-- choose appropriate icon name
