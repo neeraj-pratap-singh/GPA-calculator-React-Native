@@ -9,34 +9,24 @@ const Information: React.FC = () => {
 
   return (
     <ScrollView
-      style={Layout.fill}
+      style={[Layout.fill, Layout.backgroundColorWhite]} // Add a background color for visibility
       contentContainerStyle={[
-        Layout.fullSize,
-        Layout.fill,
         Layout.colCenter,
-        Layout.scrollSpaceBetween,
+        Layout.justifyContentBetween,
+        Gutters.regularHPadding,
       ]}
     >
-      <View
-        style={[
-          Layout.fill,
-          Layout.justifyContentBetween,
-          Layout.alignItemsStart,
-          Layout.fullWidth,
-          Gutters.regularHPadding,
-        ]}
-      >
-        <View>
-          <Text style={[Fonts.titleRegular]}>{t('information:title')}</Text>
-          <Text
-            style={[Fonts.textBold, Fonts.textRegular, Gutters.regularBMargin]}
-          >
-            {t('information:subtitle')}
-          </Text>
-          <Text style={[Fonts.textSmall, Fonts.textLight]}>
-            {t('information:description')}
-          </Text>
-        </View>
+      <View>
+        <Text style={[Fonts.titleRegular]}>{t('information:title')}</Text>
+        <Text
+          style={[Fonts.textBold, Fonts.textRegular, Gutters.regularBMargin]}
+        >
+          {t('information:subtitle')}
+        </Text>
+        <Text style={[Fonts.textSmall, Fonts.textLight]}>
+          {t('information:description')}
+        </Text>
+        {/* Add more content here if needed */}
       </View>
     </ScrollView>
   );
