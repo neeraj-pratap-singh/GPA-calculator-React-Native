@@ -1,49 +1,15 @@
-import React, { useEffect } from 'react';
-import {
-  View,
-  ActivityIndicator,
-  Text,
-  TouchableOpacity,
-  ScrollView,
-  Image,
-  Alert,
-} from 'react-native';
-import { useDispatch } from 'react-redux';
+import React from 'react';
+import { View, Text, TouchableOpacity, ScrollView } from 'react-native';
 import { useTranslation } from 'react-i18next';
 import { Brand } from '../../components';
 import { useTheme } from '../../hooks';
-import { useLazyFetchOneQuery } from '../../services/modules/users';
-import { changeTheme, ThemeState } from '../../store/theme';
-import i18next from 'i18next';
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons'; // <-- add this line
+import { useNavigation } from '@react-navigation/native';
 
 const Home = () => {
+  const navigation = useNavigation()
   const { t } = useTranslation(['example', 'welcome']);
-  const {
-    Common,
-    Fonts,
-    Gutters,
-    Layout,
-    Images,
-    darkMode: isDark,
-  } = useTheme();
-  const dispatch = useDispatch();
-
-  const [fetchOne, { data, isSuccess, isLoading, isFetching }] =
-    useLazyFetchOneQuery();
-
-  useEffect(() => {
-    if (isSuccess && data?.name) {
-      Alert.alert(t('example:helloUser', { name: data.name }));
-    }
-  }, [isSuccess, data]);
-
-  const onChangeTheme = ({ theme, darkMode }: Partial<ThemeState>) => {
-    dispatch(changeTheme({ theme, darkMode }));
-  };
-
-  const onChangeLanguage = (lang: 'fr' | 'en') => {
-    i18next.changeLanguage(lang);
-  };
+  const { Common, Fonts, Gutters, Layout, darkMode: isDark } = useTheme();
 
   return (
     <ScrollView
@@ -97,37 +63,34 @@ const Home = () => {
         >
           <TouchableOpacity
             style={[Common.button.circle, Gutters.regularBMargin]}
-            onPress={() => fetchOne(`${Math.ceil(Math.random() * 10 + 1)}`)}
+            onPress={() => console.log('weighted calculator')}
           >
-            {isFetching || isLoading ? (
-              <ActivityIndicator />
-            ) : (
-              <Image
-                source={Images.icons.send}
-                style={{ tintColor: isDark ? '#A6A4F0' : '#44427D' }}
-              />
-            )}
-          </TouchableOpacity>
-
-          <TouchableOpacity
-            style={[Common.button.circle, Gutters.regularBMargin]}
-            onPress={() => onChangeTheme({ darkMode: !isDark })}
-          >
-            <Image
-              source={Images.icons.colors}
-              style={{ tintColor: isDark ? '#A6A4F0' : '#44427D' }}
+            <Icon
+              name="calculator" // <-- choose appropriate icon name
+              size={34}
+              color={isDark ? '#A6A4F0' : '#44427D'}
             />
           </TouchableOpacity>
 
           <TouchableOpacity
             style={[Common.button.circle, Gutters.regularBMargin]}
-            onPress={() =>
-              onChangeLanguage(i18next.language === 'fr' ? 'en' : 'fr')
-            }
+            onPress={() => console.log('un-weighted calculator')}
           >
-            <Image
-              source={Images.icons.translate}
-              style={{ tintColor: isDark ? '#A6A4F0' : '#44427D' }}
+            <Icon
+              name="calculator-variant" // <-- choose appropriate icon name
+              size={34}
+              color={isDark ? '#A6A4F0' : '#44427D'}
+            />
+          </TouchableOpacity>
+
+          <TouchableOpacity
+            style={[Common.button.circle, Gutters.regularBMargin]}
+            onPress={() => navigation.navigate("Information")}
+          >
+            <Icon
+              name="information" // <-- choose appropriate icon name
+              size={34}
+              color={isDark ? '#A6A4F0' : '#44427D'}
             />
           </TouchableOpacity>
         </View>
