@@ -19,17 +19,17 @@ const MainNavigator = () => {
       <Stack.Screen
         name="Information"
         component={Information}
-        options={{ headerShown: true }}
+        options={{ headerShown: false }}
       />
       <Stack.Screen
         name="Weighted"
         component={Weighted}
-        options={{ headerShown: true }}
+        options={{ headerShown: false }}
       />
       <Stack.Screen
         name="Unweighted"
         component={Unweighted}
-        options={{ headerShown: true }}
+        options={{ headerShown: false }}
       />
     </Stack.Navigator>
   );
