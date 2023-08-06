@@ -18,7 +18,7 @@ const TextInputComponent: React.FC<TextInputComponentProps> = ({
       value={value}
       onChangeText={onChange}
       placeholder="Enter course"
-      placeholderTextColor="#888" // Making placeholder more visible
+      placeholderTextColor="#888"
       style={[styles.input, style]}
     />
   );
@@ -26,13 +26,13 @@ const TextInputComponent: React.FC<TextInputComponentProps> = ({
 
 const styles = StyleSheet.create({
   input: {
-    width: Dimensions.get('window').width * (1 / 2.8),
+    width: Dimensions.get('window').width * (1 / 2.9),
     backgroundColor: 'white',
     color: 'black',
     paddingHorizontal: 10,
     paddingVertical: 5,
     borderBottomWidth: 1,
-    borderColor: '#555', // Darkened bottom border color
+    borderColor: '#555',
   },
 });
 

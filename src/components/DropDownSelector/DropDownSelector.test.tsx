@@ -1,12 +1,12 @@
 import React from 'react';
 import { render, fireEvent } from '@testing-library/react-native';
-import TypeDropDown from './TypeDropDown'; 
+import DropDownSelector from './DropDownSelector'; 
 
-test('TypeDropDown selects value correctly', () => {
+test('DropDownSelector selects value correctly', () => {
   const handleTypeChange = jest.fn();
 
   const { getByText, getByPlaceholderText } = render(
-    <TypeDropDown onTypeChange={handleTypeChange} />
+    <DropDownSelector onTypeChange={handleTypeChange} />
   );
 
   const dropdown = getByPlaceholderText('Select Type');

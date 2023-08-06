@@ -23,15 +23,15 @@ describe('RowComponent', () => {
       onTypeChangeMock,
       onTextInputChangeMock,
       onGradeChangeMock,
-      typeDropdown: getByTestId('type-dropdown'),
+      DropDownSelector: getByTestId('type-dropdown'),
       textInputComponent: getByTestId('text-input-component'),
       gradeDropdown: getByTestId('grade-dropdown'),
     };
   };
 
   test('should render the RowComponent correctly', () => {
-    const { typeDropdown, textInputComponent, gradeDropdown } = setup();
-    expect(typeDropdown).toBeDefined();
+    const { DropDownSelector, textInputComponent, gradeDropdown } = setup();
+    expect(DropDownSelector).toBeDefined();
     expect(textInputComponent).toBeDefined();
     expect(gradeDropdown).toBeDefined();
   });

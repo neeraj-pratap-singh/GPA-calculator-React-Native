@@ -22,12 +22,20 @@ const HeaderComponent: React.FC<HeaderComponentProps> = ({
 
   return (
     <View style={styles.container}>
-      <TouchableOpacity onPress={() => navigation.goBack()}>
+      <TouchableOpacity
+        onPress={() => {
+          console.log('go back'), navigation.goBack();
+        }}
+      >
         <Icon name="arrow-back" size={30} color={iconColor} />
       </TouchableOpacity>
       <Text style={[styles.title, { color: iconColor }]}>{title}</Text>
       {showInfoIcon && (
-        <TouchableOpacity onPress={() => navigation.navigate(infoScreen)}>
+        <TouchableOpacity
+          onPress={() => {
+            console.log('go back'), navigation.navigate(infoScreen);
+          }}
+        >
           <Icon name="information-circle" size={30} color={iconColor} />
         </TouchableOpacity>
       )}

@@ -1,11 +1,9 @@
-import React, { useState } from 'react';
+// RowComponent.tsx
+import React from 'react';
 import { View, StyleSheet } from 'react-native';
-import { TypeDropDown } from '../../components';
-import { TextInputComponent } from '../../components';
-import { GradeDropDown } from '../../components';
+import { DropDownSelector, TextInputComponent } from '../../components';
 
 interface RowComponentProps {
-  // specify the props you want to pass down to the child components
   onTypeChange: (type: string) => void;
   onTextInputChange: (text: string) => void;
   onGradeChange: (grade: string) => void;
@@ -18,16 +16,48 @@ const RowComponent: React.FC<RowComponentProps> = ({
   onTypeChange,
   onTextInputChange,
   onGradeChange,
+  typeValue,
   textInputValue,
+  gradeValue,
 }) => {
-  const [course, setCourse] = useState('');
+  const typeItems = [
+    { label: 'AP', value: 'AP' },
+    { label: 'Hounors', value: 'Hounors' },
+    { label: 'Regular', value: 'Regular' },
+  ];
+
+  const gradeItems = [
+    { label: 'A', value: 'A' },
+    { label: 'B', value: 'B' },
+    { label: 'C', value: 'C' },
+    { label: 'D', value: 'D' },
+    { label: 'F', value: 'F' },
+  ];
+
   return (
     <View style={styles.container}>
-      {/* <TypeDropDown onTypeChange={onTypeChange} /> */}
       <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-        <TextInputComponent value={course} onChange={setCourse} />
+        <DropDownSelector
+          items={typeItems}
+          value={typeValue}
+          onChange={onTypeChange}
+          placeholder="Type"
+        />
       </View>
-      {/* <GradeDropDown onGradeChange={onGradeChange} /> */}
+      <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+        <TextInputComponent
+          value={textInputValue}
+          onChange={onTextInputChange}
+        />
+      </View>
+      <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+        <DropDownSelector
+          items={gradeItems}
+          value={gradeValue}
+          onChange={onGradeChange}
+          placeholder="Grade"
+        />
+      </View>
     </View>
   );
 };
