@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { View, StyleSheet } from 'react-native';
 import { TypeDropDown } from '../../components';
 import { TextInputComponent } from '../../components';
@@ -20,15 +20,14 @@ const RowComponent: React.FC<RowComponentProps> = ({
   onGradeChange,
   textInputValue,
 }) => {
+  const [course, setCourse] = useState('');
   return (
     <View style={styles.container}>
-      <TypeDropDown onTypeChange={onTypeChange} />
-      <TextInputComponent
-        value={textInputValue}
-        onValueChange={onTextInputChange}
-        error={''}
-      />
-      <GradeDropDown onGradeChange={onGradeChange} />
+      {/* <TypeDropDown onTypeChange={onTypeChange} /> */}
+      <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+        <TextInputComponent value={course} onChange={setCourse} />
+      </View>
+      {/* <GradeDropDown onGradeChange={onGradeChange} /> */}
     </View>
   );
 };
