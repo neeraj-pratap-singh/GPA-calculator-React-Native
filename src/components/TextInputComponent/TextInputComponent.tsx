@@ -1,38 +1,37 @@
-// TextInputComponent.tsx
 import React from 'react';
-import { TextInput, StyleSheet, Dimensions } from 'react-native';
+import { TextInput, Text, View } from 'react-native';
+import { useTranslation } from 'react-i18next';
+import { useTheme } from '../../hooks';
 
-interface TextInputComponentProps {
-  value?: string;
-  onChange?: (text: string) => void;
-  style?: {};
+interface TextInputProps {
+  value: string;
+  onValueChange: (text: string) => void;
+  error: string;
 }
 
-const TextInputComponent: React.FC<TextInputComponentProps> = ({
+const TextInputComponent: React.FC<TextInputProps> = ({
   value,
-  onChange,
-  style,
+  onValueChange,
+  error,
 }) => {
+  const { t } = useTranslation(['example', 'welcome']);
+  const { darkMode: isDark, Fonts } = useTheme();
+
   return (
-    <TextInput
-      value={value}
-      onChangeText={onChange}
-      placeholder="Enter course"
-      style={[styles.input, style]}
-    />
+    <View>
+      <TextInput
+        value={value}
+        onChangeText={onValueChange}
+        placeholder={t('example:enterText')}
+        placeholderTextColor={isDark ? '#A6A4F0' : '#44427D'}
+        style={{
+          backgroundColor: isDark ? '#A6A4F0' : '#44427D',
+          ...Fonts.textRegular,
+        }}
+      />
+      <Text style={{ color: 'red', ...Fonts.textSmall }}>{error}</Text>
+    </View>
   );
 };
-
-const styles = StyleSheet.create({
-  input: {
-    width: Dimensions.get('window').width * (1 / 2.8),
-    backgroundColor: 'white',
-    color: 'black',
-    paddingHorizontal: 10, // Padding for the text inside the TextInput
-    paddingVertical: 5, // Padding for the text inside the TextInput
-    borderBottomWidth: 1, // Only the bottom border
-    borderColor: '#ccc', // Border color
-  },
-});
 
 export default TextInputComponent;
