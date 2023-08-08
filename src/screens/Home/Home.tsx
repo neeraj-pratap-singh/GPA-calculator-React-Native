@@ -56,7 +56,7 @@ const Home = () => {
         <View
           style={[
             Layout.row,
-            Layout.justifyContentBetween,
+            Layout.justifyContentAround,
             Layout.fullWidth,
             Gutters.smallTMargin,
           ]}
@@ -72,7 +72,7 @@ const Home = () => {
             />
           </TouchableOpacity>
 
-          <TouchableOpacity
+          {/* <TouchableOpacity
             style={[Common.button.circle, Gutters.regularBMargin]}
             onPress={() => navigation.navigate("Unweighted")}
           >
@@ -81,7 +81,7 @@ const Home = () => {
               size={34}
               color={isDark ? '#A6A4F0' : '#44427D'}
             />
-          </TouchableOpacity>
+          </TouchableOpacity> */}
 
           <TouchableOpacity
             style={[Common.button.circle, Gutters.regularBMargin]}
