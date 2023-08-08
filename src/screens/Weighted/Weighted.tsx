@@ -7,12 +7,18 @@ import {
   TouchableOpacity,
   StyleSheet,
 } from 'react-native';
-import { HeaderComponent } from '../../components';
-import { ButtonComponent, RowComponent } from '../../components';
+import {
+  ButtonComponent,
+  RowComponent,
+  TypeSelector,
+  HeaderComponent,
+} from '../../components';
 import { useTheme } from '../../hooks';
 
 const Weighted = () => {
   const [rows, setRows] = useState([{ type: 'AP', course: '', grade: 'A' }]);
+  const [currentType, setCurrentType] = useState('Weighted');
+  console.log('currentType', currentType);
 
   const addRow = () => {
     console.log('add row');
@@ -54,10 +60,11 @@ const Weighted = () => {
   return (
     <View style={styles.container}>
       <HeaderComponent
-        title="Weighted GPA"
+        title="GPA Calculator"
         showInfoIcon={true}
         infoScreen="Information"
       />
+      <TypeSelector onTypeChange={type => setCurrentType(type)} />
       <ScrollView style={styles.container}>
         <View style={[styles.row, styles.header]}>
           <Text style={styles.text}>Type</Text>

@@ -5,3 +5,4 @@ export { default as TextInputComponent } from './TextInputComponent/TextInputCom
 export { default as ButtonComponent } from './ButtonComponent/ButtonComponent';
 export { default as HeaderComponent } from './HeaderComponent/HeaderComponent';
 export { default as RowComponent } from './RowComponent/RowComponent';
+export { default as TypeSelector } from './TypeSelector/TypeSelector';

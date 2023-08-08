@@ -24,17 +24,21 @@ const HeaderComponent: React.FC<HeaderComponentProps> = ({
     <View style={styles.container}>
       <TouchableOpacity
         onPress={() => {
-          console.log('go back'), navigation.goBack();
+          navigation.goBack();
         }}
+        style={styles.iconContainer}
       >
         <Icon name="arrow-back" size={30} color={iconColor} />
       </TouchableOpacity>
+
       <Text style={[styles.title, { color: iconColor }]}>{title}</Text>
+
       {showInfoIcon && (
         <TouchableOpacity
           onPress={() => {
-            console.log('go back'), navigation.navigate(infoScreen);
+            navigation.navigate(infoScreen);
           }}
+          style={styles.iconContainer}
         >
           <Icon name="information-circle" size={30} color={iconColor} />
         </TouchableOpacity>
@@ -46,7 +50,6 @@ const HeaderComponent: React.FC<HeaderComponentProps> = ({
 const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
-    justifyContent: 'space-between',
     alignItems: 'center',
     height: 80,
     paddingHorizontal: 15,
@@ -57,12 +60,14 @@ const styles = StyleSheet.create({
     },
     shadowOpacity: 0.25,
     shadowRadius: 3.84,
-    elevation: 5,
+  },
+  iconContainer: {
+    width: 50,
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   title: {
-    position: 'absolute',
-    left: 0,
-    right: 0,
+    flex: 1,
     textAlign: 'center',
     fontSize: 20,
     fontWeight: 'bold',
