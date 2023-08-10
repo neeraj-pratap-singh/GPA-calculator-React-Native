@@ -1,4 +1,3 @@
-// TextInputComponent.tsx
 import React from 'react';
 import { TextInput, StyleSheet, Dimensions } from 'react-native';
 
@@ -16,7 +15,7 @@ const TextInputComponent: React.FC<TextInputComponentProps> = ({
   return (
     <TextInput
       value={value}
-      onChangeText={onChange}
+      onChangeText={(text) => onChange && onChange(text)}  // Ensure that onChange is available before calling it.
       placeholder="Enter course"
       placeholderTextColor="#888"
       style={[styles.input, style]}

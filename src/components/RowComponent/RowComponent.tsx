@@ -1,4 +1,3 @@
-// RowComponent.tsx
 import React from 'react';
 import { View, StyleSheet } from 'react-native';
 import { DropDownSelector, TextInputComponent } from '../../components';
@@ -36,7 +35,7 @@ const RowComponent: React.FC<RowComponentProps> = ({
 
   return (
     <View style={styles.container}>
-      <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+      <View style={styles.itemContainer}>
         <DropDownSelector
           items={typeItems}
           value={typeValue}
@@ -44,13 +43,13 @@ const RowComponent: React.FC<RowComponentProps> = ({
           placeholder="Type"
         />
       </View>
-      <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+      <View style={styles.itemContainer}>
         <TextInputComponent
           value={textInputValue}
           onChange={onTextInputChange}
         />
       </View>
-      <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+      <View style={styles.itemContainer}>
         <DropDownSelector
           items={gradeItems}
           value={gradeValue}
@@ -68,6 +67,11 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     alignItems: 'center',
     marginVertical: 10,
+  },
+  itemContainer: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
   },
 });
 

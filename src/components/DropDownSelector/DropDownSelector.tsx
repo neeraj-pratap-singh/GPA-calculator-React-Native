@@ -1,4 +1,3 @@
-// DropDownSelector.tsx
 import React, { useState } from 'react';
 import DropDownPicker from 'react-native-dropdown-picker';
 

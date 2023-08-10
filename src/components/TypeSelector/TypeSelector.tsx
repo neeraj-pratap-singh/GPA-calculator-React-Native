@@ -6,7 +6,7 @@ interface TypeSelectorProps {
 }
 
 const TypeSelector: React.FC<TypeSelectorProps> = ({ onTypeChange }) => {
-  const [isEnabled, setIsEnabled] = useState(true);
+  const [isEnabled, setIsEnabled] = useState(false);
 
   const toggleSwitch = () => {
     setIsEnabled(previousState => !previousState);

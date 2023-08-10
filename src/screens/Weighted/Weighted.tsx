@@ -1,4 +1,3 @@
-// Weighted.tsx
 import React, { useState } from 'react';
 import {
   View,
@@ -16,17 +15,21 @@ import {
 import { useTheme } from '../../hooks';
 
 const Weighted = () => {
-  const [rows, setRows] = useState([{ type: 'AP', course: '', grade: 'A' }]);
+  const generateID = () => `${Date.now()}-${Math.random()}`;
+
+  const [rows, setRows] = useState([
+    { id: generateID(), type: 'AP', course: '', grade: 'A' },
+  ]);
   const [currentType, setCurrentType] = useState('Weighted');
-  console.log('currentType', currentType);
 
   const addRow = () => {
-    console.log('add row');
-    setRows([...rows, { type: 'AP', course: '', grade: 'A' }]);
+    setRows([
+      ...rows,
+      { id: generateID(), type: 'AP', course: '', grade: 'A' },
+    ]);
   };
 
   const deleteRow = () => {
-    console.log('delete row');
     if (rows.length > 1) {
       const newRows = [...rows];
       newRows.pop();
@@ -35,6 +38,7 @@ const Weighted = () => {
   };
 
   const handleTypeChange = (value: string, index: number) => {
+    console.log('handleTypeChange', value, index);
     let newRows = [...rows];
     newRows[index].type = value;
     setRows(newRows);
@@ -53,8 +57,8 @@ const Weighted = () => {
   };
 
   const calculateGPA = () => {
-    console.log(rows);
-    // Perform calculation
+    // Perform GPA calculation logic here
+    console.log('gpa data', rows);
   };
 
   return (
@@ -65,15 +69,15 @@ const Weighted = () => {
         infoScreen="Information"
       />
       <TypeSelector onTypeChange={type => setCurrentType(type)} />
-      <ScrollView style={styles.container}>
-        <View style={[styles.row, styles.header]}>
+      <ScrollView style={styles.scrollView}>
+        <View style={styles.headerRow}>
           <Text style={styles.text}>Type</Text>
           <Text style={styles.text}>Course</Text>
           <Text style={styles.text}>Grade</Text>
         </View>
         {rows.map((row, index) => (
           <RowComponent
-            key={index}
+            key={row.id}
             onTypeChange={value => handleTypeChange(value, index)}
             onTextInputChange={value => handleTextInputChange(value, index)}
             onGradeChange={value => handleGradeChange(value, index)}
@@ -82,20 +86,11 @@ const Weighted = () => {
             gradeValue={row.grade}
           />
         ))}
-        <View
-          style={{
-            flex: 1,
-            flexDirection: 'row',
-            justifyContent: 'space-between',
-          }}
-        >
-          <TouchableOpacity style={styles.addButton} onPress={() => addRow()}>
+        <View style={styles.buttonContainer}>
+          <TouchableOpacity style={styles.addButton} onPress={addRow}>
             <Text style={styles.addButtonText}>Add Course</Text>
           </TouchableOpacity>
-          <TouchableOpacity
-            style={styles.addButton}
-            onPress={() => deleteRow()}
-          >
+          <TouchableOpacity style={styles.addButton} onPress={deleteRow}>
             <Text style={styles.addButtonText}>Delete Course</Text>
           </TouchableOpacity>
         </View>
@@ -110,27 +105,33 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#FFF',
   },
-  row: {
+  scrollView: {
+    marginBottom: 60, // Add space below for dropdown to show properly
+  },
+  headerRow: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
     padding: 10,
-  },
-  header: {
-    backgroundColor: '#ddd', // Added a slight grey background for the header
-    paddingHorizontal: 15, // Added horizontal padding
-    borderRadius: 10, // Rounded corners
+    backgroundColor: '#ddd',
+    paddingHorizontal: 15,
+    borderRadius: 10,
     margin: 10,
   },
   text: {
     fontSize: 16,
     color: '#000',
   },
+  buttonContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    marginTop: 10,
+    marginBottom: 20,
+  },
   addButton: {
     backgroundColor: '#ADD8E6',
     paddingVertical: 10,
     paddingHorizontal: 30,
-    margin: 15,
     borderRadius: 5,
     alignItems: 'center',
   },
