@@ -84,8 +84,10 @@ const Weighted = () => {
     let total = 0;
     let count = 0;
     rows.forEach(row => {
-      total += calculateGPAValue(row.grade, row.type);
-      count++;
+      if (row.type !== 'Regular') {
+        total += calculateGPAValue(row.grade, row.type);
+        count++;
+      }
     });
     setGpaResult(count > 0 ? total / count : 0);
     setModalVisible(true);
@@ -129,19 +131,23 @@ const Weighted = () => {
         <Text style={styles.buttonText}>{'Calculate'}</Text>
       </TouchableOpacity>
       <Modal
+        animationType="fade"
+        transparent={true}
         visible={modalVisible}
         onRequestClose={() => setModalVisible(false)}
       >
-        <View style={styles.modalView}>
-          <Text style={styles.modalText}>
-            Your {currentType} GPA is {gpaResult.toFixed(2)}
-          </Text>
-          <TouchableOpacity
-            style={styles.closeButton}
-            onPress={() => setModalVisible(false)}
-          >
-            <Text style={styles.closeButtonText}>Close</Text>
-          </TouchableOpacity>
+        <View style={styles.modalOverlay}>
+          <View style={styles.modalBox}>
+            <Text style={styles.modalText}>
+              Your {currentType} GPA is {gpaResult.toFixed(2)}
+            </Text>
+            <TouchableOpacity
+              style={styles.closeButton}
+              onPress={() => setModalVisible(false)}
+            >
+              <Text style={styles.closeButtonText}>Close</Text>
+            </TouchableOpacity>
+          </View>
         </View>
       </Modal>
     </View>
@@ -221,6 +227,20 @@ const styles = StyleSheet.create({
   closeButtonText: {
     color: '#000',
     fontSize: 16,
+  },
+  modalOverlay: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: 'rgba(0,0,0,0.5)',
+  },
+  modalBox: {
+    width: 250,
+    padding: 20,
+    borderRadius: 10,
+    backgroundColor: '#FFF',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
 });
 
