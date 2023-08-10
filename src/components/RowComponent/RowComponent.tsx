@@ -29,7 +29,6 @@ const RowComponent: React.FC<RowComponentProps> = ({
     { label: 'A', value: 'A' },
     { label: 'B', value: 'B' },
     { label: 'C', value: 'C' },
-    { label: 'D', value: 'D' },
     { label: 'F', value: 'F' },
   ];
 
