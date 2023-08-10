@@ -5,6 +5,7 @@ import {
   Text,
   TouchableOpacity,
   StyleSheet,
+  Modal,
 } from 'react-native';
 import { RowComponent, TypeSelector, HeaderComponent } from '../../components';
 import { useTheme } from '../../hooks';
@@ -16,6 +17,34 @@ const Weighted = () => {
     { id: generateID(), type: 'AP', course: '', grade: 'A' },
   ]);
   const [currentType, setCurrentType] = useState('Weighted');
+  const [modalVisible, setModalVisible] = useState(false);
+  const [gpaResult, setGpaResult] = useState(0.0);
+
+  const calculateGPAValue = (grade, type) => {
+    if (currentType === 'Weighted' && (type === 'AP' || type === 'Honors')) {
+      switch (grade) {
+        case 'A':
+          return 5.0;
+        case 'B':
+          return 4.0;
+        case 'C':
+          return 3.0;
+        default:
+          return 0.0;
+      }
+    } else {
+      switch (grade) {
+        case 'A':
+          return 4.0;
+        case 'B':
+          return 3.0;
+        case 'C':
+          return 2.0;
+        default:
+          return 0.0;
+      }
+    }
+  };
 
   const addRow = () => {
     setRows([
@@ -52,8 +81,14 @@ const Weighted = () => {
   };
 
   const calculateGPA = () => {
-    // Perform GPA calculation logic here
-    console.log('gpa data', rows);
+    let total = 0;
+    let count = 0;
+    rows.forEach(row => {
+      total += calculateGPAValue(row.grade, row.type);
+      count++;
+    });
+    setGpaResult(count > 0 ? total / count : 0);
+    setModalVisible(true);
   };
 
   return (
@@ -93,6 +128,22 @@ const Weighted = () => {
       <TouchableOpacity onPress={calculateGPA} style={styles.button}>
         <Text style={styles.buttonText}>{'Calculate'}</Text>
       </TouchableOpacity>
+      <Modal
+        visible={modalVisible}
+        onRequestClose={() => setModalVisible(false)}
+      >
+        <View style={styles.modalView}>
+          <Text style={styles.modalText}>
+            Your {currentType} GPA is {gpaResult.toFixed(2)}
+          </Text>
+          <TouchableOpacity
+            style={styles.closeButton}
+            onPress={() => setModalVisible(false)}
+          >
+            <Text style={styles.closeButtonText}>Close</Text>
+          </TouchableOpacity>
+        </View>
+      </Modal>
     </View>
   );
 };
@@ -148,6 +199,26 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   addButtonText: {
+    color: '#000',
+    fontSize: 16,
+  },
+  modalView: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  modalText: {
+    fontSize: 20,
+    marginBottom: 20,
+  },
+  closeButton: {
+    backgroundColor: '#ADD8E6',
+    paddingVertical: 10,
+    paddingHorizontal: 30,
+    borderRadius: 5,
+    alignItems: 'center',
+  },
+  closeButtonText: {
     color: '#000',
     fontSize: 16,
   },
