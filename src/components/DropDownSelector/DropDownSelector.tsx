@@ -22,7 +22,11 @@ const DropDownSelector: React.FC<DropDownSelectorProps> = ({
       value={value}
       items={items}
       setOpen={setOpen}
-      setValue={onChange}
+      setValue={callback => {
+        // This is the change
+        const selectedValue = callback(items);
+        onChange(selectedValue);
+      }}
       placeholder={placeholder}
       containerStyle={{ width: '90%', height: 60 }}
       dropDownDirection="AUTO"

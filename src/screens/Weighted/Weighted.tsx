@@ -95,7 +95,13 @@ const Weighted = () => {
           </TouchableOpacity>
         </View>
       </ScrollView>
-      <ButtonComponent title="Calculate" onPress={calculateGPA} />
+      <TouchableOpacity
+        onPress={calculateGPA}
+        style={[styles.button, { backgroundColor: '#ADD8E6' }]}
+      >
+        <Text style={[styles.text, { color: '#000' }]}>{'Calculate'}</Text>
+      </TouchableOpacity>
+      {/* <ButtonComponent title="Calculate" onPress={calculateGPA} /> */}
     </View>
   );
 };
@@ -107,6 +113,19 @@ const styles = StyleSheet.create({
   },
   scrollView: {
     marginBottom: 60, // Add space below for dropdown to show properly
+  },
+  button: {
+    paddingHorizontal: 16,
+    paddingVertical: 10,
+    borderRadius: 4,
+    alignItems: 'center',
+    justifyContent: 'center',
+    margin: 10,
+    marginHorizontal: 20,
+  },
+  text: {
+    fontSize: 20,
+    fontWeight: 'bold',
   },
   headerRow: {
     flexDirection: 'row',
@@ -126,7 +145,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     marginTop: 10,
-    marginBottom: 20,
+    marginBottom: 150,
   },
   addButton: {
     backgroundColor: '#ADD8E6',
