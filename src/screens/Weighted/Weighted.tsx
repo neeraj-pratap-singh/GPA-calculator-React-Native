@@ -6,12 +6,7 @@ import {
   TouchableOpacity,
   StyleSheet,
 } from 'react-native';
-import {
-  ButtonComponent,
-  RowComponent,
-  TypeSelector,
-  HeaderComponent,
-} from '../../components';
+import { RowComponent, TypeSelector, HeaderComponent } from '../../components';
 import { useTheme } from '../../hooks';
 
 const Weighted = () => {
@@ -95,13 +90,9 @@ const Weighted = () => {
           </TouchableOpacity>
         </View>
       </ScrollView>
-      <TouchableOpacity
-        onPress={calculateGPA}
-        style={[styles.button, { backgroundColor: '#ADD8E6' }]}
-      >
-        <Text style={[styles.text, { color: '#000' }]}>{'Calculate'}</Text>
+      <TouchableOpacity onPress={calculateGPA} style={styles.button}>
+        <Text style={styles.buttonText}>{'Calculate'}</Text>
       </TouchableOpacity>
-      {/* <ButtonComponent title="Calculate" onPress={calculateGPA} /> */}
     </View>
   );
 };
@@ -112,7 +103,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#FFF',
   },
   scrollView: {
-    marginBottom: 60, // Add space below for dropdown to show properly
+    flex: 1,
   },
   button: {
     paddingHorizontal: 16,
@@ -122,10 +113,12 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     margin: 10,
     marginHorizontal: 20,
+    backgroundColor: '#ADD8E6',
   },
-  text: {
+  buttonText: {
     fontSize: 20,
     fontWeight: 'bold',
+    color: '#000',
   },
   headerRow: {
     flexDirection: 'row',
@@ -143,7 +136,7 @@ const styles = StyleSheet.create({
   },
   buttonContainer: {
     flexDirection: 'row',
-    justifyContent: 'space-between',
+    justifyContent: 'space-around',
     marginTop: 10,
     marginBottom: 150,
   },
