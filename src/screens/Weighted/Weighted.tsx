@@ -21,7 +21,7 @@ const Weighted = () => {
   const [gpaResult, setGpaResult] = useState(0.0);
 
   const calculateGPAValue = (grade, type) => {
-    if (currentType === 'Weighted' && (type === 'AP' || type === 'Honors')) {
+    if (currentType === 'Weighted' && type === 'AP') {
       switch (grade) {
         case 'A':
           return 5.0;
@@ -84,10 +84,10 @@ const Weighted = () => {
     let total = 0;
     let count = 0;
     rows.forEach(row => {
-      if (row.type !== 'Regular') {
-        total += calculateGPAValue(row.grade, row.type);
-        count++;
-      }
+      // if (row.type !== 'Regular') {
+      total += calculateGPAValue(row.grade, row.type);
+      count++;
+      // }
     });
     setGpaResult(count > 0 ? total / count : 0);
     setModalVisible(true);
