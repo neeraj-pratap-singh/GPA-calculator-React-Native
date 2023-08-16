@@ -138,6 +138,7 @@ const Weighted = () => {
       >
         <View style={styles.modalOverlay}>
           <View style={styles.modalBox}>
+            <Text style={styles.modalTitle}>GPA Result</Text>
             <Text style={styles.modalText}>
               Your {currentType} GPA is {gpaResult.toFixed(2)}
             </Text>
@@ -208,39 +209,43 @@ const styles = StyleSheet.create({
     color: '#000',
     fontSize: 16,
   },
-  modalView: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  modalText: {
-    fontSize: 20,
-    marginBottom: 20,
-  },
-  closeButton: {
-    backgroundColor: '#ADD8E6',
-    paddingVertical: 10,
-    paddingHorizontal: 30,
-    borderRadius: 5,
-    alignItems: 'center',
-  },
-  closeButtonText: {
-    color: '#000',
-    fontSize: 16,
-  },
   modalOverlay: {
     flex: 1,
+    backgroundColor: 'rgba(0, 0, 0, 0.5)',
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: 'rgba(0,0,0,0.5)',
   },
   modalBox: {
-    width: 250,
-    padding: 20,
+    backgroundColor: '#fff',
     borderRadius: 10,
-    backgroundColor: '#FFF',
+    padding: 20,
     alignItems: 'center',
-    justifyContent: 'center',
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.25,
+    shadowRadius: 4,
+    elevation: 5,
+  },
+  modalTitle: {
+    fontSize: 18,
+    fontWeight: 'bold',
+    marginBottom: 10,
+  },
+  modalText: {
+    fontSize: 16,
+    marginBottom: 15,
+    textAlign: 'center',
+  },
+  closeButton: {
+    backgroundColor: '#2196F3',
+    borderRadius: 5,
+    padding: 10,
+    elevation: 2,
+  },
+  closeButtonText: {
+    color: 'white',
+    fontSize: 14,
+    textAlign: 'center',
   },
 });
 
