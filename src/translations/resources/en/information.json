@@ -3,19 +3,17 @@
     "subtitle": "Weighted and Unweighted calculator",
     "description": `The Weighted GPA Calculator is a React Native app that allows users to calculate their Grade Point Average (GPA) based on their academic performance. Unlike a traditional GPA calculator, the weighted GPA calculator takes into account the difficulty level of the courses by assigning different weights to each grade. \n\n
     Description: \n
-    The Weighted GPA Calculator provides a user-friendly interface where students can input their course grades and corresponding credit hours or course weights. The app supports multiple grading systems, such as letter grades (A, B, C, etc.) or percentage grades (e.g., 85%, 92%, etc.), depending on the educational institution's grading policy. \n\n
+    The Weighted GPA Calculator provides a user-friendly interface where students can input their course grades and course weights. The app supports the letter grading systems (A, B, C, etc.). \n\n
     Key Features: \n
-    1. Course Input: Users can add individual courses by providing the course name, grade received, and either credit hours or the course weight. They can also indicate whether a course is an honors, Advanced Placement (AP), or other weighted course. \n
-    2. Weighted Calculation: The app calculates the weighted GPA by considering the weight of each course. For example, an "A" in an honors course may carry a higher weight than an "A" in a standard course. \n
-    3. Support for Grading Scales: The app accommodates various grading scales, including 4.0 scale, 5.0 scale (for AP/honors courses), and other customized scales. \n
+    1. Course Input: Users can add individual courses by providing the course name, grade received, and course type. \n
+    2. Weighted Calculation: The app calculates the weighted GPA by considering the weight of each course. For example, an "A" in an AP course carries a higher weight than an "A" in a standard course. \n
+    3. Support for Grading Scales: The app accommodates various grading scales, including 4.0 scale, 5.0 scale (for AP courses), and other customized scales. \n
     4. Real-Time Updates: As users input their course grades and credits, the GPA is updated in real-time, providing instant feedback on the calculated GPA. \n
     5. Multiple Semesters: The app supports the calculation of GPA for multiple semesters or academic terms, allowing students to track their cumulative GPA over time. \n
     6. GPA Scale Customization: Users can customize the GPA scale and its corresponding letter grade ranges to match their educational institution's grading policy. \n
-    7. User Profiles: The app may offer user profiles to allow multiple users (e.g., students) to maintain their individual academic records and GPAs. \n
-    8. Export and Share: Students can export and share their calculated GPA results with advisors, counselors, or themselves for record-keeping. \n\n
-    Benefits: \n
+  
     The Weighted GPA Calculator app provides students with a more accurate representation of their academic performance, considering the rigor of their courses. It helps students to strategize their course selections for future terms to improve their GPA or maintain their high academic standing. \n
     By providing real-time GPA updates and supporting different grading systems, the app caters to a broader audience, including students from different educational institutions and countries. \n\n
-    Overall, the Weighted GPA Calculator is a valuable tool for students seeking to assess their academic progress and make informed decisions regarding their education. It simplifies the GPA calculation process, making it accessible and convenient for students on-the-go.`
+    Overall, the GPA Calculator is a valuable tool for students seeking to assess their academic progress and make informed decisions regarding their education. It simplifies the GPA calculation process, making it accessible and convenient for students on-the-go.`
   }
   
